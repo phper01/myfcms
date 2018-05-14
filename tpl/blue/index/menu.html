@@ -1,0 +1,31 @@
+<nav class="navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+
+            <a href="/">
+                <h1>蓝海化工</h1>
+                <p>LAN HAI CO.,LTD.</p>
+            </a>
+        </div>
+        <span class="pull-left search">
+                联系电话：0512-57995109
+        </span>
+        <div class="nav-list">
+            <ul class="nav navbar-nav">
+                <li><a href="/">网站首页</a></li>
+                {channel id="vo" topid="0"}
+                <li>
+                    <a {if $vo.id eq $topchannel.id}class="active"{/if} href="{$vo.typeurl}">{$vo.typename}</a>
+                    <ul>
+                        {channel id="child" topid=$vo.id}
+                        <li>
+                            <a  href="{$child.typeurl}">{$child.typename}</a>
+                        </li>
+                        {/channel}
+                    </ul>
+                </li>
+                {/channel}
+            </ul>
+        </div>
+    </div>
+</nav>

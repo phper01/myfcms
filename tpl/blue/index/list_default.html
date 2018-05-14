@@ -1,0 +1,112 @@
+<!DOCTYPE HTML>
+<html lang="zh-cn">
+
+    <head>
+        <title></title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="/tpl/blue/static/css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="/tpl/blue/static/css/main.css" />
+    </head>
+
+    <body>
+        {include file="top.html"}
+        {include file="menu.html"}
+        {include file="banner.html"}
+        <!--main-->
+
+        <div class="abpg container">
+            <div>
+                <div class="serli">
+                    <ol class="breadcrumb">
+                        <li><i class="glyphicon glyphicon-home"></i>
+                            {$myfcms.position}
+                        </li>
+                    </ol>
+                    <div class="news-liebiao clearfix news-list-xiug">
+                        <div class="row clearfix news-xq">
+                            <div class="col-md-2 new-time">
+                                <span class="glyphicon glyphicon-time timetubiao"></span>
+                                <span class="nqldDay">2</span>
+                                <div class="shuzitime">
+                                    <div>Jun</div>
+                                    <div>2017</div>
+                                </div>
+                            </div>
+                            <div class="col-md-10 clearfix">
+                                <div class="col-md-3">
+                                    <img src="/tpl/blue/static/images/news/news1.jpg" class="new-img">
+                                </div>
+                                <div class="col-md-9">
+                                    <h4>
+                                        <a href="news-detail.html">炼化业创新技术应对产业变革</a>
+                                    </h4>
+                                    <p>中化新网讯 6月15～16日，由中国石化联合会主办的2017亚洲炼油和石化科技大会在京举行。会议指出，在全球油气行业阶段性动荡和变革、国内成品油需求结构明显改变的形势下，传统炼化行业正在通过创新技术探寻发展机遇。</p>
+                                </div>
+                            </div>
+                        </div>
+                        {list id="arc" pagesize="15"}
+                        <div class="row clearfix news-xq">
+                            <div class="col-md-2 new-time">
+                                <span class="glyphicon glyphicon-time timetubiao"></span>
+                                <span class="nqldDay">11</span>
+                                <div class="shuzitime">
+                                    <div>Jun</div>
+                                    <div>2017</div>
+                                </div>
+                            </div>
+                            <div class="col-md-10 clearfix">
+                                <div class="col-md-3">
+                                    {if $arc.litpic}
+                                    <img src="{$arc.litpic}" class="new-img"/>
+                                    {/if}
+                                </div>
+                                <div class="col-md-9">
+                                    <h4>
+                                        <a href="{$arc.arcurl}">{$arc.title}</a>
+                                    </h4>
+                                    <p>{$arc.description}</p>
+                                </div>
+                            </div>
+                        </div>
+                        {/list}
+                    </div>
+                    <nav class=" text-center">
+                        <ul class="pagination ">
+                            <li>
+                                <a href="#" aria-label="Previous">
+                                    <span aria-hidden="true">«</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">1</a>
+                            </li>
+                            <li>
+                                <a href="#">2</a>
+                            </li>
+                            <li>
+                                <a href="#">3</a>
+                            </li>
+                            <li>
+                                <a href="#">4</a>
+                            </li>
+                            <li>
+                                <a href="#">5</a>
+                            </li>
+                            <li>
+                                <a href="#" aria-label="Next">
+                                    <span aria-hidden="true">»</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        {include file="bottom.html"}
+        <script src="static/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="static/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="static/js/main.js" type="text/javascript" charset="utf-8"></script>
+    </body>
+
+</html>

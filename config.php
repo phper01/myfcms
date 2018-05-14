@@ -9,6 +9,6 @@
   'DB_PREFIX' => 'myf_',
   'DIR_CATEGORY' => 'list',
   'DIR_ARCHIVES' => 'view',
-  'THEME' => 'green',
+  'THEME' => 'blue',
   'VERSION' => '2.0.20130910',
 ); ?>
