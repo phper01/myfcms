@@ -1,0 +1,330 @@
+/**
+ * 闵益飞内容管理系统 2.0 样式
+ * author:www.minyifei.cn
+ * date:2012-12-8
+ */
+body{
+	font: 12px/1.5 "Lucida Grande", Helvetica, Arial, Verdana, '微软雅黑', sans-serif;
+}
+/*全局*/
+.cut-line{
+	margin: 0 5px;
+	color: #D6D6D6;
+}
+a {
+	color: #06C;
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+.wapper{
+	width:1002px;
+	margin:0 auto;
+}
+.btn,
+.btn span{ border: 0; background: url(../images/buttons.png) no-repeat; cursor: pointer; }
+.btn-pay{ display: inline-block; *display: inline; width: 78px; height: 28px; text-indent: -1000px; *zoom: 1; overflow: hidden; }
+.btn-white{ padding: 0 0 0 10px; height: 27px; background-position: 0 -35px; color: #000; text-shadow: 1px 1px 0 #FFF; }
+.btn-white span{ float: left; padding: 5px 11px 6px 0; height: 16px; background-position: 100% -35px; line-height: 16px; cursor: pointer; }
+.btn-white-disabled,.btn-white-disabled:hover{cursor:default; text-decoration:none;}
+.btn-white-disabled span,.btn-white-disabled span:hover{ color:#999999; cursor:default; text-decoration:none;}
+.btn-addsub{ width: 110px; height: 27px; background-position: 0 -110px; text-indent: -1000px; overflow: hidden; }
+.btn-newexclusive{width:130px;height:27px;background-position: 0 -150px;text-indent: -1000px; overflow: hidden;}
+.btn-grey,.btn-grey:hover,
+.btn-yellow,.btn-yellow:hover{width:78px; height:27px; display: inline-block; *display: inline; *zoom: 1; overflow:hidden; background-position:0px -192px; text-align:center; line-height:27px; color:#FFF; text-decoration:none; margin-right:16px; text-shadow: 1px 1px 1px #555;}
+.btn-yellow,.btn-yellow:hover{ margin-right:10px; background-position:0px -72px;}
+
+/*顶部*/
+#header{
+	padding:5px 0;
+}
+#logo{
+	float: left;
+	display: inline;
+	margin-left:0;
+}
+#assistive-menu{
+	float: right;
+	display: inline;
+	margin: 20px 0 0;
+	color: #999;
+}
+#assistive-menu a{
+	color:#333;
+}
+
+/*顶部菜单*/
+#nav {
+	background: url(../images//nav-bg.png) no-repeat;
+}
+#nav .menu li a, #nav .menu li a span, #nav .sub-menu li a, #nav .sub-menu li a span {
+	background: url(../images//menu-bg.png) no-repeat;
+}
+#nav .menu {
+	height: 40px;
+}
+#nav .menu li {
+	float: left;
+	width: 120px;
+	height: 40px;
+}
+#nav .menu li a, #nav .menu li a span {
+	display: block;
+	color: #4B4B4B;
+	font-weight: bold;
+	text-align: center;
+	text-decoration: none;
+	text-shadow: 1px 1px 0 #FFF;
+	cursor: pointer;
+}
+#nav .menu li a {
+	position: absolute;
+	padding: 0 0 0 10px;
+	background-position: 0 0;
+}
+#nav .menu li a span {
+	padding: 11px 10px 11px 0;
+	width: 100px;
+	background-position: 100% 0;
+}
+#nav .menu li a:hover, #nav .menu li a.current-page {
+	margin: 0 0 0 -1px;
+	padding-left: 11px;
+	background-position: 0 -100px;
+	text-decoration: none;
+	z-index: 100;
+}
+#nav .menu li a:hover span, #nav .menu li a.current-page span {
+	padding-right: 11px;
+	background-position: 100% -100px;
+}
+#nav .menu li a.current-page, #nav .menu li a.current-page span {
+	color: #FFF;
+	font-weight: bold;
+	text-shadow: 1px 1px 1px #53a909;
+}
+#nav .menu li a.current-page, #nav .menu li a.current-page:hover {
+	background-position: 0 -200px;
+	z-index: 200;
+}
+#nav .menu li a.current-page span, #nav .menu li a.current-page:hover span {
+	background-position: 100% -200px;
+}
+#nav .menu li.first-node a {
+	background-position: 100px 100px;
+}
+#nav .menu li.first-node a:hover {
+	margin: 0;
+	padding-left: 10px;
+	background-position: 0 -50px;
+}
+#nav .menu li.first-node a.current-page, #nav .menu li.first-node a.current-page:hover {
+	margin: 0;
+	padding-left: 10px;
+	background-position: 0 -150px;
+}
+#nav .sub-menu {
+	padding: 5px 20px 6px;
+	height: 24px;
+}
+#nav .sub-menu li {
+	float: left;
+	display: inline;
+	margin: 0 20px 0 0;
+}
+#nav .sub-menu li a, #nav .sub-menu li a span {
+	float: left;
+	cursor: pointer;
+	background-position: 100px 100px;
+}
+#nav .sub-menu li a {
+	padding: 0 0 0 10px;
+	height: 24px;
+	color: #666;
+}
+#nav .sub-menu li a span {
+	padding: 3px 10px 3px 0;
+	height: 18px;
+	line-height: 18px;
+}
+#nav .sub-menu li a.current-page {
+	background-position: 0 -250px;
+	color: #FFF;
+}
+#nav .sub-menu li a.current-page span {
+	background-position: 100% -250px;
+}
+
+/*主内容区*/
+#main{
+	margin-top:10px;
+}
+#notic{
+	line-height:25px;
+	padding-top:10px;
+}
+
+/*表格样式*/
+.uibox{ padding: 4px; border: 1px solid #D0D0D0; border-radius: 3px; background: #F0F0F0; }
+.uibox-inner{ padding: 20px; background: #FFF; }
+.uitopb{ padding: 3px 0 0; border-radius: 3px 3px 0 0;  background: url(../images/topb-bg.png) repeat-x; }
+.uitopb-header{ height: 38px; border-bottom: 1px solid #CCC; }
+.uitopb-header h3{ padding: 12px 15px; height: 14px; color: #333; font-size: 14px; line-height: 14px; }
+.uitopb-border{ border: 1px solid #CCC; border-top: 0; }
+.uitopb-bottom{ border-bottom: 1px solid #CCC; }
+.uitopg{ padding: 10px 15px; border-radius: 3px; border: 1px solid #E0E0E0; background: url(../images/topg-bg.png) repeat-x; }
+.uitopg .uitopg-title{ margin: 0 0 5px; padding: 0 0 10px; border-bottom: 1px solid #E0E0E0; color: #333; font-size: 14px; *zoom:1;}
+.uitopg .uitopg-title:after{content:".";display:block;height:0;clear:both;visibility:hidden;}
+.uidotted{ margin: 0 0 10px; padding: 0 0 10px; border-bottom: 1px dotted #CCC; }
+.ui-title{ padding: 0 20px 10px; border-bottom: 1px solid #CCC; color: #333; font-size: 14px; }
+.uibox-10b{overflow:hidden;padding:10px;border:6px solid #EBEBEB;}
+.uib-header{ padding: 0 0 15px 10px; border-bottom: 2px solid #666; }
+.uib-title{ color: #333; font-size: 14px; }
+
+.tabledv{ position: relative}
+.tabledv table{ width: 100%; color: #666; }
+.tabledv table th{ background: #FFF url(../images/table-top-bg.png) repeat-x 0 100%; font-weight: normal; color: #333; }
+.tabledv table th,
+.tabledv table td{ padding: 8px 10px; }
+.tabledv table td{ border-top: 1px solid #CCC; }
+.tabledv table .alt td{ background: #F7F9FB; }
+.tabledv .cssSelect{ margin: 0; float: none; display: inline-block; *display: inline; *zoom: 1; text-align: left !important; }
+
+
+.ucform{ width:722px; overflow:hidden; padding:3px; margin:0px auto; }
+.ucform-auto,.ucform-auto .fm-item,.ucform-auto .fm-field{ width:auto;}
+.ucform-title{ height:40px; line-height:40px; font-size:14px; padding-top:8px; }
+.fm-item{ width:720px; overflow:hidden; clear:both; padding:8px 0px; border:1px solid #FFF; border-radius:3px; line-height:18px; }
+/*.fm-item:hover{ background-color:#FFFEF0; border:1px solid #FFE4A2; }*/
+.fm-title{ width:112px; float:left; text-align:right; overflow:hidden; padding:4px 8px 4px 0px; }
+.fm-field{ width:600px; float:left; padding:4px 0px; }
+.fm-field span{ margin:0px 4px; }
+.fm-field span.error-msg{ color:#F60; }
+.fm-field label span{ margin:0; }
+.form-tip-box{ margin: 0 0 0 10px; }
+.fm-submit{ padding:8px 0px; overflow:hidden; }
+.fm-text{ margin: -3px 0 0; padding: 4px; line-height: 16px; border: 1px solid #CCC; border-radius: 3px; background: #FFF url(../images/input-text-bg.png) repeat-x; vertical-align: middle; }
+.fm-text:focus{ border-color:#F60; }
+.fm-text-tip{ color:#CCC;}
+.fm-select{  }
+.fm-slist{ margin: 3px; padding: 3px; border: 1px solid #CCC; border-radius: 3px; }
+
+.btn-fmsubmit{ width:78px; height:27px; display: inline-block; *display: inline; *zoom: 1; overflow:hidden; background-position:0px -72px; text-align:center; line-height:27px; color:#FFF; text-decoration:none; margin-right:16px; text-shadow: 1px 1px 1px #F60; }
+.btn-fmsubmit:hover{ text-decoration:none; background-position:-78px -72px; }
+.btn-fmsubmit-disabled,
+.btn-fmsubmit-disabled:hover{ opacity:0.5; filter:alpha(opacity=50); cursor:default; background-position:0px -72px;}
+
+.tabs{ height: 38px; border-bottom: 0px solid #CCC; }
+.tabs li{ float: left; width: 120px; height: 38px; }
+.tabs li a{ display: block; padding: 12px 15px; width: 89px; height: 14px; border-right: 1px solid #CCC; background: #FFF url(../images/tabs-bg.png) repeat-x; font-size: 14px; color: #999; text-align: center; line-height: 14px; text-decoration: none; }
+.tabs li a:hover{ background-position: 0 -40px; }
+.tabs li a.current{ position: absolute; padding: 12px 15px 13px; background-position: 50% 100%; background-repeat: no-repeat; color: #333; cursor: default; }
+.resource-tabs { float: left;}
+.resource-tabs li{width: 200px;}
+.resource-tabs li a{ width: 169px;}
+
+.pager span{
+	display:inline-block;
+	padding:0 5px;
+}
+.pager a{
+	display:inline-block;
+	padding:0 5px;
+}
+a.asel{
+	display:inline-block;
+	padding:0 5px;
+	padding-top:5px;
+}
+a.on{
+	color:red;
+	font-weight:bold;
+}
+table.noborder{
+	width:auto
+}
+table.noborder tr td{
+	border:0;
+	padding:8px 2px;
+}
+
+/*btn*/
+.btn-blue{ display:inline-block; *display:inline; *zoom:1; background:#52658B; color:#FFFFFF; padding:3px 9px; border-radius:3px; box-shadow:1px 1px 2px rgba(0,0,0,0.2); text-shadow:1px 1px 1px rgba(0,0,0,0.5); border:1px solid #52658B; vertical-align:middle; font-size:12px; line-height:15px!important; font-weight:normal; white-space:nowrap;}
+.btn-blue:hover{ text-decoration:none; background-position:0 -280px; background-color:#687CA4;}
+
+.tinfo{
+	margin-top:4px;
+	display:inline-block;
+	color:#959595;
+}
+select {
+	vertical-align: middle;
+	background: none repeat scroll 0 0 #F9F9F9;
+	border-color: #666666 #CCCCCC #CCCCCC #666666;
+	border-style: solid;
+	border-width: 1px;
+	color: #333;
+	padding: 2px;
+}
+.uploadbtn{
+	position: absolute;
+	left: 130px;
+	top: 148px;
+	width: 70px;
+	overflow: hidden;
+	filter: alpha(opacity=0);
+	-moz-opacity:0.0;
+	opacity: 0.0;
+}
+/*底部*/
+#footer{
+	clear: both;
+	color: #666;
+	border-top: 5px solid #D8D8D8;
+	text-align: center;
+	margin-top: 20px;
+	padding: 15px 0 32px 0;
+	background: #EFEFEF;
+	line-height: 25px;
+}
+.mlogo{
+	width:300px;
+	height:250px;
+	display:block;
+	padding:2px;
+	background:white;
+	border:1px solid #ccc;
+}
+.minfo{
+	width:300px;
+	line-height:23px;
+}
+.minfo ul dt{
+	font-weight:bold
+}
+.minfo ul dd.info{
+	line-height:20px;
+	margin-top:3px;
+}
+.mcontrol{
+	line-height:30px
+}
+.theme-box{
+	width:300px;
+	position:relative
+}
+.theme-current{
+	width:304px;
+	height:50px;
+	color:#FF6600;
+	font-size:26px;
+	position:absolute;
+	left:1px;
+	top:40%;
+	z-index: 999;
+	background:#FFF url(../images/table-top-bg.png) repeat-x 0 100%;
+	border-top:1px solid #CCCCCC;
+	border-bottom:1px solid #CCCCCC;
+	line-height:45px;
+}

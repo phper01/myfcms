@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="chrome=1">
+        <title>{$myfcms.seotitle}|{global name="cfg_webname"}</title>
+        <meta name="description" content="{$myfcms.description}" />
+		<meta name="keywords" content="{$myfcms.keywords}" />
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <link href="{$myf_path}/tpl/default/public/css/sjb.css" rel="stylesheet" />
+    </head>
+
+    <body>
+        {include file="top.html"}
+        <div id="body">
+	        <div class="sectiontop">
+        		<img src="{$myf_path}/images/ad.jpg" />
+	        </div>
+	        <div id="position" class="clearfix">
+	        	<div class="main">
+	        		您现在的位置：{$myfcms.position}
+	        	</div>
+	        	<div class="search">
+	        		<form action="http://www.baidu.com/baidu" id="bdsearch" target="_blank"><input name="word" type="text" value="在这里搜索..." onmouseover="this.focus();" onfocus="this.select();" onclick="{literal}if(this.value=='在这里搜索...'){this.value=''}" onblur="if(this.value==''){this.value='在这里搜索...'}{/literal}" class="text"><input name="cl" type="hidden" value="3"><input name="ct" type="hidden" value="2097152"><input name="si" type="hidden" value="2014sjb.cn"><input type="submit" value="搜索" class="submit"></form>
+	        	</div>
+	        </div>
+            <div class="clearfix">
+            	<div class="cleft">
+            		<div id="newslist">
+            			<ul>
+            				{list pagesize="25" id="vo" key="k"}
+            				<li>·<a href="{$vo.arcurl}" target="_blank" title="{$vo.title}">{$vo.title}</a><span>{$vo.sendtime|date_format:'%Y-%m-%d %H:%M:%S'}</span></li>
+            				{/list}
+            			</ul>
+            			<div id="pager" class="clearfix">
+							{pagelist pagesize="25"} 
+            			</div>
+            		</div>
+            		<div class="sectioncenter">
+            		</div>
+            		<div class="pnews">
+            			<h3>
+            				图文推荐
+            			</h3>
+            			<ul class="clearfix">
+            				{arclist id="arc" limit="8" flag="c"}
+							<li><a href="{$arc.arcurl}" title="{$arc.title}" target="_blank"><i style="width: 150px; height: 110px; overflow: hidden;"><img src="{$arc.litpic|default:"$myf_path/public/images/nopic.jpg"}" alt="{$arc.title}" width="150" height="110"></i><b>{$arc.title}</b></a></li>
+							{/arclist}
+		       		    </ul>
+            		</div>
+            	</div>
+            	<div class="cright">
+            		<div class="ritem">
+            			<h3 class="title">
+            				世界杯最新资讯
+            			</h3>
+            			<ul class="t clearfix">
+            				{arclist id="arc" limit="2" flag="p" typeid="1"}
+							<li><a href="{$arc.arcurl}" target="_blank" title="{$arc.title}"><i style="width: 124px; height: 92px; overflow: hidden;"><img src="{$arc.litpic|default:"$myf_path/public/images/nopic.jpg"}"  width="124" height="92" alt="{$arc.title}"></i><b>{$arc.title}</b></a></li>
+							{/arclist}
+			            </ul>
+			            <ul class="b">
+			            	{arclist id="arc" limit="5" typeid="1" index="1"}
+							<li><a href="{$arc.arcurl}" target="_blank" title="{$arc.title}">{$arc.title}</a></li>
+							{/arclist}
+			            </ul>
+            		</div>
+            		<div class="ritem">
+            			<h3 class="title">
+            				热点新闻
+            			</h3>
+            			<ul class="hnews">
+            				{arclist id="arc" limit="10" order="click desc"}
+							<li><a href="{$arc.arcurl}" target="_blank" title="{$arc.title}">{$arc.title}</a></li>
+							{/arclist}
+            			</ul>
+            		</div>
+            	</div>
+            </div>
+        </div>
+       {include file="bottom.html"}
+       <script type="text/javascript" src="{$myf_path}/tpl/default/public/js/jquery-1.8.1.min.js"></script>
+       <script type="text/javascript">
+        	$(document).ready(function(){
+        		$("#newslist li").each(function(i){
+        			if((i+1)%5==0){
+        				$(this).addClass("o");
+        			}
+        		})
+        	})
+        </script>
+    </body>
+</html>

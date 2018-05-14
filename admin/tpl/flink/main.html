@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title>友情链接管理-闵益飞内容管理</title>
+		<meta name="description" content="" />
+		<meta name="author" content="minyifei.cn" />
+		<link type="text/css" rel="stylesheet" href="{$myf_path}/css/reset.css" />
+		<link type="text/css" rel="stylesheet" href="{$myf_path}/css/myfcms.css" />
+		<script type="text/javascript" src="{$myf_path}/js/jquery-1.7.2.min.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				
+				$("#submit-btn").click(function(){
+					if(confirm("确定要删除选中的链接吗？")){
+						$("#flinkForm").attr("action","{$myf_path}/index.php?m=flink&a=delete");
+						$("#flinkForm").submit();
+					}
+				})
+				
+				$("#submit-sort-btn").click(function(){
+					$("#flinkForm").attr("action","{$myf_path}/index.php?m=flink&a=sort_rank");
+					$("#flinkForm").submit();
+				})
+				
+				$("#chkAll").click(function(){
+					 var checked = $(this).attr("checked");
+					 if(checked == "checked"){
+						 $(".chkid").attr("checked",checked);
+					 }else{
+					 	$(".chkid").removeAttr("checked");
+					 }
+				})
+			})
+		</script>
+	</head>
+	<body>
+		{include file="../index/top.html"}
+		<div id="main" class="wapper clearfix">
+			<div class="uitopb uitopb-border">
+				<div class="uitopb-header">
+					<h3>友情链接管理</h3>
+				</div>
+				<div class="tabledv">
+					<form id="flinkForm" action="" method="post">
+					<table>
+						<tbody>
+							<tr>
+								<th width="50">顺序</th>
+        						<th class="tacenter" width="30"><input type="checkbox" id="chkAll"/></th>
+								<th>网站名称</th>
+								<th class="tacenter" width="120">网站logo</th>
+								<th class="tacenter" width="120">更新时间</th>
+								<th class="tacenter" width="100">操作</th>
+							</tr>
+						{foreach from=$list item=vo}	
+						<tr align="center" bgcolor="#FFFFFF" height="26" onmousemove="javascript:this.bgColor='#fafafa';" onmouseout="javascript:this.bgColor='#FFFFFF';">
+							<td>
+								<input class="left mr10 fm-text" style="margin-top: 0;width:30px;text-align: center"  onkeyup="if(isNaN(value))execCommand('undo')" onafterpaste="if(isNaN(value))execCommand('undo')" name="sortrank_{$vo.id}" id="txtSortrank{$vo.id}" type="text"  value="{$vo.sortrank}">
+							</td>
+							<td><input type="checkbox" id="chkId{$vo.id}" class="chkid" name="id[]" value="{$vo.id}"></td>
+							<td align="left">{$vo.webname}</td>
+							<td>
+								{if $vo.logo}
+								<img src="{$vo.logo}" id="imgLitpic" alt="缩略图预览" title="缩略图预览" style="height:30px;margin-right:10px;border:1px solid #ccc;padding:1px;" />
+								{else}
+								无图标
+								{/if}
+							</td>
+							<td><div style="width:66px;height:15px;overflow:hidden" title="{$vo.sendtime}">{$vo.dtime}</div></td>
+							<td>
+								<a href="{$vo.url}" target="_blank"><img src="{$myf_path}/images/part-list.gif" title="预览" alt="预览" border="0" width="16" height="16"></a>&nbsp;
+								<a href="{$myf_path}/index.php?m=flink&a=update&id={$vo.id}">
+								<img src="{$myf_path}/images/gtk-edit.png" title="编辑" alt="编辑" style="cursor:pointer" border="0" width="16" height="16"></a>&nbsp;
+								<a href="{$myf_path}/index.php?m=flink&a=delete&id[]={$vo.id}"  onclick="return(confirm('确定删除?请确保要删除该链接吗'))"><img src="{$myf_path}/images/del.png" title="删除" alt="删除" border="0" width="16" height="16"></a>
+							</td>
+						</tr>
+						{/foreach}
+						<tr class="alt">
+							<td colspan="8">
+							<a id="submit-sort-btn" href="javascript:void(0)" class="left btn btn-white mr10"><span>更新排序</span></a>&nbsp;
+							<a id="submit-btn" href="javascript:void(0)" class="left btn btn-white mr10"><span>批量删除</span></a>&nbsp;
+							</td>
+						</tr>
+						</tbody>
+					</table>
+					</form>
+				</div>
+			</div>
+		</div>
+		{include file="../index/bottom.html"}
+	</body>
+</html>

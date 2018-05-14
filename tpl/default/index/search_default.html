@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title>{$myfcms.keyword} {$myfcms.tag}-{global name="cfg_webname"}</title>
+		<meta name="description" content="{$myfcms.description}" />
+		<meta name="keywords" content="{$myfcms.keywords}" />
+		<meta name="author" content="minyifei.cn" />
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link type="text/css" rel="stylesheet" href="{$myf_path}/tpl/default/public/css/main.css" />
+	</head>
+	<body>
+		{include file="top.html"}
+		<div class="main">
+			<div class="position">
+				{$myfcms.position}
+			</div>
+			<div class="list-left">
+				<div class="list-item-info">
+					<div class="news-title">
+						<h2>搜索</h2>
+						<div class="clear"></div>
+					</div>
+					<ul>
+						{searchlist pagesize="25" id="vo"}
+						<li>
+							<div class="info">
+								<h3><a href="{$vo.arcurl}">{$vo.title}</a></h3>
+								<p class="sendtime">发布日期：<small>{$vo.sendtime|date_format:'%Y-%m-%d %H:%M:%S'}</small>&nbsp;标签：{foreach from=$vo.tags item=tag}<small><a class="atag" href="{$myf_path}/index.php?a=search&tag={$tag}" target="_blank">{$tag}</a>&nbsp;</small>{/foreach}</p>
+								<p>{$vo.description}...</p>
+							</div>
+						</li>
+						{/searchlist}
+					</ul>
+					<div class="list-page">
+						{searchpagelist pagesize="25"}
+				      	<div class="clear"></div>
+					</div>			
+				</div>	
+			</div>
+			<div class="list-right">
+				<div class="list-sidebar">
+					<h2>热门文章</h2>
+					<ul>
+						{arclist id="arc" typeid=$topchannel.id limit="10" order="click desc"}
+						<li><a href="{$arc.arcurl}">{$arc.title}</a></li>
+						{/arclist}
+					</ul>
+				</div>
+				<div class="list-sidebar">
+					<h2>随机文章</h2>
+					<ul>
+						{arclist id="arc" typeid=$topchannel.id limit="10" order="rand()"}
+						<li><a href="{$arc.arcurl}">{$arc.title}</a></li>
+						{/arclist}
+					</ul>
+				</div>
+			</div>
+			<div class="clear"></div>
+			{include file="bottom.html"}
+		</div>
+		
+	</body>
+</html>

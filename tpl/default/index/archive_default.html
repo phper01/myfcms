@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title>{$myfcms.title}-{global name="cfg_webname"}</title>
+		<meta name="description" content="{$myfcms.description}{$myfcms.arctype.description}" />
+		<meta name="keywords" content="{$myfcms.keywords}" />
+		<meta name="author" content="minyifei.cn" />
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link type="text/css" rel="stylesheet" href="{$myf_path}/tpl/default/public/css/main.css" />
+	</head>
+	<body>
+		{include file="top.html"}
+		<div class="main">
+			<div class="position">
+				{$myfcms.position}
+			</div>
+			<div class="list-left">
+				<div class="content">
+					<div class="title">
+						<h1>
+							{$myfcms.title}
+						</h1>
+					</div>
+					<p class="info">
+						时间：<small>{$myfcms.sendtime|date_format:'%Y-%m-%d %H:%M:%S'}</small>
+						点击：<small><script src="{$myf_path}/index.php?a=click&id={$myfcms.id}" type="text/javascript" language="javascript"></script>次</small>
+						作者：<em>{$myfcms.writer}</em>
+						来源：<em>{$myfcms.source}</em>
+					</p>
+					<p class="info">
+						{foreach from=$myfcms.tags item=tag}
+						<span><a href="{$myf_path}/index.php?a=search&tag={$tag}" target="_blank">{$tag}</a></span>
+						{/foreach}
+					</p>
+					<div class="arcbody">
+						{$myfcms.body}
+					</div>
+					<p class="arcnav">
+						上一篇：{$myfcms.pre}<br>
+						下一篇：{$myfcms.next}
+					</p>
+				</div>
+			</div>
+			<div class="list-right">
+				<div class="list-sidebar">
+					<h2>热门文章</h2>
+					<ul>
+						{arclist id="arc" typeid=$topchannel.id limit="10" order="click desc"}
+						<li><a href="{$arc.arcurl}">{$arc.title}</a>{$vo.sendtime|date_format:'%Y-%m-%d'}</li>
+						{/arclist}
+					</ul>
+				</div>
+				<div class="list-sidebar">
+					<h2>随机文章</h2>
+					<ul>
+						{arclist id="arc" typeid=$topchannel.id limit="10" order="rand()"}
+						<li><a href="{$arc.arcurl}">{$arc.title}</a>{$vo.sendtime|date_format:'%Y-%m-%d'}</li>
+						{/arclist}
+					</ul>
+				</div>
+			</div>
+			<div class="clear"></div>
+			{include file="bottom.html"}
+		</div>
+		
+	</body>
+</html>

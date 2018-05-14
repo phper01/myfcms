@@ -1,0 +1,81 @@
+<div class="top">
+	<div class="header">
+		<div class="logo">
+			<a href="{$myf_path}/"> <img src="{$myf_path}/tpl/default/public/images/logo.jpg" /> </a>
+		</div>
+		<div class="search">
+			<form action="{$myf_path}/index.php" method="get">
+				<ul>
+					<li>
+						<select class="searchsel" name="typeid">
+							<option value="0">====选择栏目====</option>
+							{channel id="vo" tree="show"}
+							<option value="{$vo.id}"> {$vo.spacer}{$vo.typename} </option>
+							{/channel}
+						</select>
+						<input type="hidden" name="a" value="search" />
+					</li>
+					<li>
+						<input name="keyword" id="search-keyword" onblur="ablur(this)" onclick="aclick(this)"  onmouseover="this.focus()"  value="请输入关键字" size="20" class="searchtxt">
+					</li>
+					<li>
+						<input type="submit" class="searchbtn" value="搜索" />
+					</li>
+					<li>
+					<li class="search_text">
+						| 热门: <a href="{$myf_path}?a=search&keyword=myfcms">MyfCMS</a>
+							{taglist id="vo" limit="3"}
+							<a href="{$vo.tagurl}">{$vo.name}</a>
+							{/taglist}
+					</li>
+				</ul>
+			</form>
+			<script type="text/javascript">
+				 function ablur(obj){
+				 	if(obj.value ==''){
+				 		obj.value='请输入关键字'
+				 		}
+				 }
+				 function aclick(obj){
+				 	if(obj.value=='请输入关键字')obj.value='';
+				 }
+			</script>
+		</div>
+	</div>
+	<div class="nav">
+		<div class="nav-menu">
+			<div class="nav-one">
+				<ul>
+					<li>
+						<a href="{$myf_path}/">首页</a>
+					</li>
+					{channel id="vo" topid="0" index="0"}
+					<li {if $vo.id eq $topchannel.id} class="on"{/if}>
+						<a href="{$vo.typeurl}" rel="dropmenu{$vo.id}">{$vo.typename}</a>
+					</li>
+					{/channel}
+				</ul>
+				<div class="clear"></div>
+			</div>
+			<div class="nav-two">
+				<ul>
+					{if $topchannel.id gt 0}
+						{channel id="vo" topid=$topchannel.id index="1"}
+						<li {if $vo.id eq $myfcms.typeid} class="on"{/if}>
+							<a href="{$vo.typeurl}" rel="dropmenu{$vo.id}">{$vo.typename}</a>
+						</li>
+						{/channel}
+					{else}
+					<li>
+						感谢使用MyfCMS2.0，中国首款完全开源免费的PHPCMS系统，任何个人或组织,不论赢利与否均可以免费使用！
+					</li>
+					{/if}
+				</ul>
+				<div class="clear"></div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="banner">
+	<a href="http://www.minyifei.cn" target="_blank"><img src="{$myf_path}/tpl/default/public/images/banner.jpg" border="0" /></a>
+</div>

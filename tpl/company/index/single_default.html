@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <title>{$myfcms.typename}-{global name="cfg_webname"}</title>
+        <meta name="keywords" content="{$myfcms.keywords}" />
+        <meta name="description" content="{$myfcms.description}" />
+        <meta name="author" content="minyifei.cn" />
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <link type="text/css" rel="stylesheet" href="{$myf_path}/tpl/company/public/css/main.css" />
+    </head>
+    <body>
+       {include file="top.html"}
+        <div class="center">
+             {include file="menu.html"}
+            <div class="list">
+                <div class="list-left">
+                    <div class="list-left-menu">
+                        <h3>{$topchannel.typename}</h3>
+                        <ul>
+                            {channel id="vo" topid=$topchannel.id}
+                            <li {if $vo.id eq $selfid}class="on"{/if}>
+                                <a  href="{$vo.typeurl}">{$vo.typename}</a>
+                            </li>
+                            {/channel}
+                        </ul>
+                    </div>
+                </div>
+                <div class="list-right">
+                    <div class="list-right-menu">
+                        {$myfcms.typename}
+                    </div>
+                    <div class="list-right-content">
+                        {$myfcms.body}
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+ 		{include file="bottom.html"}
+        </div>
+    </body>
+</html>

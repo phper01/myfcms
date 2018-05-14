@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title>文章管理-闵益飞内容管理</title>
+		<meta name="description" content="" />
+		<meta name="author" content="minyifei.cn" />
+		<link type="text/css" rel="stylesheet" href="{$myf_path}/css/reset.css" />
+		<link type="text/css" rel="stylesheet" href="{$myf_path}/css/myfcms.css" />
+		<script type="text/javascript" src="{$myf_path}/js/jquery-1.7.2.min.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				
+				$("#submit-btn").click(function(){
+					if(confirm("确定要删除选中的文章吗？")){
+						$("#archiveForm").submit();
+					}
+				})
+				
+				$("#chkAll").click(function(){
+					 var checked = $(this).attr("checked");
+					 if(checked == "checked"){
+						 $(".chkid").attr("checked",checked);
+					 }else{
+					 	$(".chkid").removeAttr("checked");
+					 }
+				})
+				
+				$("#search-btn").click(function(){
+					$("#search").submit();
+				})
+			})
+		</script>
+	</head>
+	<body>
+		{include file="../index/top.html"}
+		<div id="main" class="wapper clearfix">
+			<div class="uitopb uitopb-border">
+				<div class="uitopb-header">
+					<h3>文章管理</h3>
+				</div>
+				<div class="uitopb-bottom pd10 clearfix">
+					<form id="search" method="get" action="{$myf_path}/index.php">
+						<input type="hidden" name="m" value="archives" />
+						<input type="hidden" name="a" value="main" />
+						<a href="{$myf_path}/index.php?m=archives&a=add" class="left btn btn-white mr10"><span>录入新文章</span></a>&nbsp;
+						<a id="submit-btn" href="javascript:void(0)" class="left btn btn-white mr10"><span>批量删除</span></a>&nbsp;
+						<span class="right">
+							<select  class="left"  name="typeid" id="selTypeid" style="width:130px;margin-right:10px">
+								<option value="0" {if $topid eq 0}selected="selected"{/if}>≡ 选择栏目 ≡</option>
+								{foreach from=$arctypes item=vo }
+									<option value="{$vo.id}"  {if $typeid eq $vo.id}selected="selected"{/if}>{$vo.spacer}{$vo.typename}</option>
+								{/foreach}
+							</select>
+							<input class="left mr10 fm-text" style="margin-top: 0;" placeholder="文章标题" name="keyword" type="text" size="15" value="">
+							<a id="search-btn" href="javascript:void(0)" class="left btn btn-white"><span>搜索</span></a>
+						</span>
+					</form>
+				</div>
+				<div class="tabledv">
+					<form id="archiveForm" action="{$myf_path}/index.php?m=archives&a=delete" method="post">
+					<table>
+						<tbody>
+							<tr>
+								<th width="40">ID</th>
+        						<th class="tacenter" width="30"><input type="checkbox" id="chkAll"/></th>
+								<th>文章标题</th>
+								<th class="tacenter" width="120">栏目</th>
+								<th class="tacenter" width="120">发布时间</th>
+								<th class="tacenter" width="50">静态</th>
+								<th class="tacenter" width="50">点击</th>
+								<th class="tacenter" width="100">操作</th>
+							</tr>
+						{foreach from=$list item=vo}	
+						<tr align="center" bgcolor="#FFFFFF" height="26" onmousemove="javascript:this.bgColor='#fafafa';" onmouseout="javascript:this.bgColor='#FFFFFF';">
+							<td>{$vo.id}</td>
+							<td><input type="checkbox" id="chkId{$vo.id}" class="chkid" name="arcid[]" value="{$vo.id}"></td>
+							<td align="left">{$vo.title}&nbsp; <span class="tred">{$vo.flagname}</span></td>
+							<td><a href="{$myf_path}/index.php?m=archives&a=main&typeid={$vo.typeid}&keyword={$keyword}" title="查看该栏目下的文章">{$vo.typename}</a></td>
+							<td><div style="width:66px;height:15px;overflow:hidden" title="{$vo.sendtime}">{$vo.sendtime}</div></td>
+							<td>
+								{if ($vo.ishtml eq 1) or ($vo.jump)}
+								<span class="tgreen">已生成</span>
+								{else}
+								<span class="tred">未生成</span>
+								{/if}
+							</td>
+							<td>{$vo.click}</td>
+							<td>
+								{if $vo.jump}
+								<a href="{$vo.jump}" target="_blank"><img src="{$myf_path}/images/part-list.gif" title="预览" alt="预览" border="0" width="16" height="16"></a>&nbsp;
+								{else}
+								<a href="{$myf_url}/index.php?a=archive&id={$vo.id}" target="_blank"><img src="{$myf_path}/images/part-list.gif" title="预览" alt="预览" border="0" width="16" height="16"></a>&nbsp;
+								{/if}
+								<a href="{$myf_path}/index.php?m=archives&a=update&id={$vo.id}">
+								<img src="{$myf_path}/images/gtk-edit.png" title="编辑" alt="编辑" style="cursor:pointer" border="0" width="16" height="16"></a>&nbsp;
+								<a href="{$myf_path}/index.php?m=archives&a=delete&arcid[]={$vo.id}"  onclick="return(confirm('确定删除?请确保要删除这篇文章吗'))"><img src="{$myf_path}/images/del.png" title="删除" alt="删除" border="0" width="16" height="16"></a>
+							</td>
+						</tr>
+						{/foreach}
+						<tr class="alt">
+							<td colspan="8">
+								<div class="pager">
+									{$page}
+								</div>
+							</td>
+						</tr>
+						</tbody>
+					</table>
+					</form>
+				</div>
+			</div>
+		</div>
+		{include file="../index/bottom.html"}
+	</body>
+</html>

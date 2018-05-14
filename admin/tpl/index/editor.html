@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>editor</title>
+		<meta name="description" content="" />
+		<meta name="author" content="minyifei" />
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+		<script type="text/javascript" charset="utf-8" src="{$myf_full_path}/editor/kindeditor-all-min.js"></script>
+		<script type="text/javascript" charset="utf-8" src="{$myf_full_path}/editor/lang/zh_CN.js"></script>
+		<script type="text/javascript">
+			var editor;
+			KindEditor.ready(function(K) {
+				editor = K.create('#editor_id', {
+					allowFileManager : true,
+					uploadJson : '{$myf_full_path}/editor/php/upload_json.php',
+					fileManagerJson : '{$myf_full_path}/editor/php/file_manager_json.php',
+				});
+			});
+		</script>
+	</head>
+
+	<body>
+		<div>
+			<header>
+				<h1>editor</h1>
+			</header>
+			<nav>
+				<p>
+					<a href="/">Home</a>
+				</p>
+				<p>
+					<a href="/contact">Contact</a>
+				</p>
+			</nav>
+
+			<div>
+				<textarea id="editor_id" style="width:700px;height:300px;">
+					&lt;strong&gt;HTML内容&lt;/strong&gt;
+				</textarea>
+			</div>
+
+			<footer>
+				<p>
+					&copy; Copyright  by minyifei
+				</p>
+			</footer>
+		</div>
+	</body>
+</html>

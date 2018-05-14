@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title>{$myfcms.typename}-{global name="cfg_webname"}</title>
+		<meta name="description" content="{$myfcms.description}" />
+		<meta name="keywords" content="{$myfcms.keywords}" />
+		<meta name="author" content="minyifei.cn" />
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link type="text/css" rel="stylesheet" href="{$myf_path}/tpl/default/public/css/main.css" />
+	</head>
+	<body>
+		{include file="top.html"}
+		<div class="main">
+			<div class="position">
+				{$myfcms.position}
+			</div>
+			<div class="content">
+				<div class="title">
+					<h1>
+						{$myfcms.typename}
+					</h1>
+				</div>
+				<div class="arcbody">
+					{$myfcms.body}
+				</div>
+			</div>
+			<div class="clear"></div>
+			{include file="bottom.html"}
+		</div>
+		
+	</body>
+</html>

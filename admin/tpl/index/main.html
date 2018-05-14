@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title>myfcms主界面</title>
+		<meta name="description" content="" />
+		<meta name="author" content="minyifei" />
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+		<link type="text/css" rel="stylesheet" href="{$myf_path}/css/reset.css" />
+		<link type="text/css" rel="stylesheet" href="{$myf_path}/css/myfcms.css" />
+		<script type="text/javascript" src="{$myf_path}/js/jquery-1.7.2.min.js"></script>
+		<script charset="utf-8" src="{$myf_path}/editor/kindeditor-all-min.js"></script>
+		<script charset="utf-8" src="{$myf_path}/editor/lang/zh_CN.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				
+			})
+			var editor;
+			KindEditor.ready(function(K) {
+				editor = K.create('textarea[name="categoryContent"]', {
+					allowFileManager : true
+				});
+			});
+			
+			function tab(index){
+				$("#ul_tabs a").removeClass("current");
+				$(".tabindex").hide();
+				$("#tab"+index).show();
+				$("#atab"+index).addClass("current");
+			}
+		</script>
+	</head>
+	<body>
+		{include file="top.html"}
+		<div id="main" class="wapper clearfix">
+			<div class="uitopb uitopb-border">
+				<div class="tabs">
+					<div class="right mt10 mr10 tgrey">dd</div>
+					<ul id="ul_tabs">
+						<li>
+							<a id="atab0" href="javascript:tab(0)" class="current">基本选项</a>
+						</li>
+						<li>
+							<a id="atab1" href="javascript:tab(1)">模板设置</a>
+						</li>
+						<li>
+							<a id="atab2" href="javascript:tab(2)">栏目内容</a>
+						</li>
+					</ul>
+				</div>
+				<div class="js_tcont tabledv">
+					<table id="tab0" class="tabindex">
+						<tbody>
+							<tr>
+								<td class="taright" width="100"><span class="tred">*</span>栏目名称：</td>
+								<td class="taleft">
+									<input class="left mr10 fm-text" style="margin-top: 0;width:150px;" name="key_word" type="text" size="15" value="">
+									<span class="tinfo">输入栏目名称</span>
+								</td>
+							</tr>
+							<tr>
+								<td class="taright" width="100"><span class="tred">*</span>上级栏目：</td>
+								<td class="taleft">
+									<select name="info[parentid]" id="parentid" style="width:160px;"><option value="0">≡ 作为一级栏目 ≡</option><option value="1"> 网站介绍</option>;<option value="2">&nbsp;├ 关于我们</option>;<option value="3">&nbsp;├ 联系方式</option>;<option value="4">&nbsp;├ 版权声明</option>;<option value="5">&nbsp;└ 招聘信息</option>;<option value="6"> 国内</option>;<option value="7"> 下载</option>;<option value="8"> 图片</option>;</select>
+								</td>
+							</tr>
+							<tr>
+								<td class="taright"><span class="tred">*</span>显示顺序：</td>
+								<td class="taleft">
+									<input class="left mr10 fm-text" style="margin-top: 0;width:50px;" name="key_word" type="text" value="50">
+									<span class="tinfo">从小到大显示</span>
+								</td>
+							</tr>
+							<tr>
+								<td class="taright"><span class="tred">*</span>英文目录：</td>
+								<td class="taleft">
+									<input class="left mr10 fm-text" style="margin-top: 0;width:150px;" name="key_word" type="text" size="15" value="">
+									<span class="tinfo">从小到大显示</span>
+								</td>
+							</tr>
+							<tr>
+								<td class="taright"><span class="tred">*</span>栏目属性：</td>
+								<td class="taleft">
+									<input type="radio" name="typepro" class="typepro" value="0" checked="checked">最终列表栏目（允许在本栏目发布文档，并生成文档列表）<br>
+					            	<input type="radio" name="typepro" class="typepro" value="1">封面栏目（栏目本身不允许发布文档）<br/>						            	
+					            	<input type="radio" name="typepro" class="typepro" value="2">外部连接（在"文件保存目录"处填写网址）<br/>
+					            	<input type="radio" name="typepro" class="typepro" value="3">单页栏目（栏目是最终的内容页面）<br/>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<table id="tab1" style="display:none" class="tabindex">
+						<tbody>
+							<tr>
+								<td class="taright" width="100">封面模板：</td>
+								<td class="taleft">
+									<input class="left mr10 fm-text" style="margin-top: 0;width:200px;" name="key_word" type="text" value="index_article.htm">
+								</td>
+							</tr>
+							<tr>
+								<td class="taright">列表模板：</td>
+								<td class="taleft">
+									<input class="left mr10 fm-text" style="margin-top: 0;width:200px;" name="key_word" type="text" value="list_article.htm">
+									<span class="tinfo"></span>
+								</td>
+							</tr>
+							<tr>
+								<td class="taright">文章模板：</td>
+								<td class="taleft">
+									<input class="left mr10 fm-text" style="margin-top: 0;width:200px;" name="key_word" type="text" value="article_article.htm">
+									<span class="tinfo"></span>
+								</td>
+							</tr>
+							<tr>
+								<td class="taright">单页模板：</td>
+								<td class="taleft">
+									<input class="left mr10 fm-text" style="margin-top: 0;width:200px;" name="key_word" type="text" value="single.htm">
+									<span class="tinfo"></span>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<table id="tab2" style="display:none" class="tabindex">
+						<tbody>
+							<tr>
+								<td class="taright" width="100">栏目标题：</td>
+								<td class="taleft">
+									<input class="left mr10 fm-text" style="margin-top: 0;width:200px;" name="key_word" type="text" value="">
+									<span class="tinfo">输入栏目标题</span>
+								</td>
+							</tr>
+							<tr>
+								<td class="taright">栏目关键字：</td>
+								<td class="taleft">
+									<input class="left mr10 fm-text" style="margin-top: 0;width:200px;" name="key_word" type="text" value="">
+									<span class="tinfo">多个关键字用逗号隔开</span>
+								</td>
+							</tr>
+							<tr>
+								<td class="taright">栏目描述：</td>
+								<td class="taleft">
+									<textarea style="width:200px" rows="5" class="left fm-text" name="content" id="faq_content"></textarea>
+								</td>
+							</tr>
+							<tr>
+								<td class="taleft" colspan="2">
+									<textarea name="categoryContent" style="width:100%;height:300px;"></textarea>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<table>
+						<tr>
+							<td>
+								<a id="search-btn" href="###" class="left btn btn-white"><span>确认保存</span></a>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<div class="uitopb uitopb-border" style="display: none">
+				<div class="uitopb-header" style="display: none">
+					<h3>添加栏目</h3>
+				</div>
+				<div class="uitopb-bottom pd10 clearfix" style="display: none">
+					<form id="search" method="get" action="">
+						<label class="left mt3 mr5">交易时间：</label>
+						<input type="hidden" id="start_time" name="start_time" value="">
+						<input type="hidden" id="end_time" name="end_time" value="">
+						<input class="left mr10 fm-text" style="margin-top: 0;" name="key_word" type="text" size="15" value="">
+						<a id="search-btn" href="###" class="left btn btn-white"><span>查看</span></a>
+					</form>
+				</div>
+				<div class="tabledv" style="display:none">
+					<table>
+						<tbody>
+							<tr>
+								<th width="50">排序</th>
+        						<th class="tacenter" width="50">ID</th>
+								<th>栏目名称</th>
+								<th class="tacenter" width="120">栏目类型</th>
+								<th class="tacenter" width="250">操作</th>
+							</tr>
+							<tr bgcolor="#FFFFFF" height="26" onmousemove="javascript:this.bgColor='#fafafa';" onmouseout="javascript:this.bgColor='#FFFFFF';">
+								<td class="tacenter">
+									<input class="left mr10 fm-text" style="margin-top: 0;width:30px;text-align: center" name="key_word" type="text"  value="50">
+								</td>
+								<td class="tacenter">
+									1
+								</td>
+								<td>
+									网站介绍
+								</td>
+								<td class="tacenter">
+									单页栏目
+								</td>
+								<td class="tacenter">
+									<a href="./">预览</a> | <a href="?m=admin&amp;c=category&amp;a=add&amp;parentid=1&amp;menuid=43&amp;s=1&amp;pc_hash=NR47OQ">添加子栏目</a> | <a href="?m=admin&amp;c=category&amp;a=edit&amp;catid=1&amp;menuid=43&amp;type=1&amp;pc_hash=NR47OQ">修改</a> | <a href="javascript:confirmurl('?m=admin&c=category&a=delete&catid=1&menuid=43','确认要删除 『 网站介绍 』 吗？')">删除</a> | <a href="?m=admin&amp;c=category&amp;a=remove&amp;catid=1&amp;pc_hash=NR47OQ">批量移动</a>
+								</td>
+							</tr>
+							<tr bgcolor="#FFFFFF" height="26" onmousemove="javascript:this.bgColor='#fafafa';" onmouseout="javascript:this.bgColor='#FFFFFF';">
+								<td class="tacenter">
+									<input class="left mr10 fm-text" style="margin-top: 0;width:30px;text-align: center" name="key_word" type="text"  value="50">
+								</td>
+								<td class="tacenter">
+									2
+								</td>
+								<td>
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├─ 关于我们
+								</td>
+								<td class="tacenter">
+									单页栏目
+								</td>
+								<td class="tacenter">
+									<a href="?m=admin&amp;c=category&amp;a=add&amp;parentid=1&amp;menuid=43&amp;s=1&amp;pc_hash=NR47OQ">添加子栏目</a> | <a href="?m=admin&amp;c=category&amp;a=edit&amp;catid=1&amp;menuid=43&amp;type=1&amp;pc_hash=NR47OQ">修改</a> | <a href="javascript:confirmurl('?m=admin&c=category&a=delete&catid=1&menuid=43','确认要删除 『 网站介绍 』 吗？')">删除</a> | <a href="?m=admin&amp;c=category&amp;a=remove&amp;catid=1&amp;pc_hash=NR47OQ">批量移动</a>
+								</td>
+							</tr>
+							<tr bgcolor="#FFFFFF" height="26" onmousemove="javascript:this.bgColor='#fafafa';" onmouseout="javascript:this.bgColor='#FFFFFF';">
+								<td class="tacenter">
+									<input class="left mr10 fm-text" style="margin-top: 0;width:30px;text-align: center" name="key_word" type="text"  value="50">
+								</td>
+								<td class="tacenter">
+									3
+								</td>
+								<td>
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├─ 联系我们
+								</td>
+								<td class="tacenter">
+									单页栏目
+								</td>
+								<td class="tacenter">
+									<a href="?m=admin&amp;c=category&amp;a=add&amp;parentid=1&amp;menuid=43&amp;s=1&amp;pc_hash=NR47OQ">添加子栏目</a> | <a href="?m=admin&amp;c=category&amp;a=edit&amp;catid=1&amp;menuid=43&amp;type=1&amp;pc_hash=NR47OQ">修改</a> | <a href="javascript:confirmurl('?m=admin&c=category&a=delete&catid=1&menuid=43','确认要删除 『 网站介绍 』 吗？')">删除</a> | <a href="?m=admin&amp;c=category&amp;a=remove&amp;catid=1&amp;pc_hash=NR47OQ">批量移动</a>
+								</td>
+							</tr>
+							<tr bgcolor="#FFFFFF" height="26" onmousemove="javascript:this.bgColor='#fafafa';" onmouseout="javascript:this.bgColor='#FFFFFF';">
+								<td class="tacenter">
+									<input class="left mr10 fm-text" style="margin-top: 0;width:30px;text-align: center" name="key_word" type="text"  value="50">
+								</td>
+								<td class="tacenter">
+									4
+								</td>
+								<td>
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├─ 版权声明
+								</td>
+								<td class="tacenter">
+									单页栏目
+								</td>
+								<td class="tacenter">
+									<a href="?m=admin&amp;c=category&amp;a=add&amp;parentid=1&amp;menuid=43&amp;s=1&amp;pc_hash=NR47OQ">添加子栏目</a> | <a href="?m=admin&amp;c=category&amp;a=edit&amp;catid=1&amp;menuid=43&amp;type=1&amp;pc_hash=NR47OQ">修改</a> | <a href="javascript:confirmurl('?m=admin&c=category&a=delete&catid=1&menuid=43','确认要删除 『 网站介绍 』 吗？')">删除</a> | <a href="?m=admin&amp;c=category&amp;a=remove&amp;catid=1&amp;pc_hash=NR47OQ">批量移动</a>
+								</td>
+							</tr>
+							<tr bgcolor="#FFFFFF" height="26" onmousemove="javascript:this.bgColor='#fafafa';" onmouseout="javascript:this.bgColor='#FFFFFF';">
+								<td class="tacenter">
+									<input class="left mr10 fm-text" style="margin-top: 0;width:30px;text-align: center" name="key_word" type="text"  value="50">
+								</td>
+								<td class="tacenter">
+									4
+								</td>
+								<td>
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─ 招聘信息
+								</td>
+								<td class="tacenter">
+									单页栏目
+								</td>
+								<td class="tacenter">
+									<a href="?m=admin&amp;c=category&amp;a=add&amp;parentid=1&amp;menuid=43&amp;s=1&amp;pc_hash=NR47OQ">添加子栏目</a> | <a href="?m=admin&amp;c=category&amp;a=edit&amp;catid=1&amp;menuid=43&amp;type=1&amp;pc_hash=NR47OQ">修改</a> | <a href="javascript:confirmurl('?m=admin&c=category&a=delete&catid=1&menuid=43','确认要删除 『 网站介绍 』 吗？')">删除</a> | <a href="?m=admin&amp;c=category&amp;a=remove&amp;catid=1&amp;pc_hash=NR47OQ">批量移动</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<table style="display:none;">
+						<tbody>
+							<tr>
+								<th width="40">ID</th>
+        						<th class="tacenter" width="30">选择</th>
+								<th>文章标题</th>
+								<th class="tacenter" width="120">栏目</th>
+								<th class="tacenter" width="120">更新时间</th>
+								<th class="tacenter" width="50">静态</th>
+								<th class="tacenter" width="50">点击</th>
+								<th class="tacenter" width="100">操作</th>
+							</tr>
+							<tr align="center" bgcolor="#FFFFFF" height="26" onmousemove="javascript:this.bgColor='#fafafa';" onmouseout="javascript:this.bgColor='#FFFFFF';">
+						<td>3574</td>
+						<td><input type="checkbox" id="chkId3574" class="chkid" name="arcid[]" value="3574"></td>
+						<td align="left">白鸦谈创业项目：“逛”的逻辑与快产品法则 														</td>
+						<td><div style="width:66px;height:15px;overflow:hidden" title="2012-06-23 20:52:33">2012-06-23 20:52:33</div></td>
+						<td>小学作文</td>
+						<td>
+							<span style="color:red">未生成</span>						</td>
+						<td>0</td>
+						
+						<td>
+							<img src="/myfcms/admin/Public/images/trun.gif" title="编辑属性" alt="编辑属性" onclick="openDialog(3574);" style="cursor:pointer" border="0" width="16" height="16">
+							<a href="/myfcms/admin/index.php?m=Archives&amp;a=update&amp;id=3574">
+								<img src="/myfcms/admin/Public/images/gtk-edit.png" title="编辑" alt="编辑" style="cursor:pointer" border="0" width="16" height="16"></a>
+							<a href="http://localhost/myfcms/index.php?m=Archives&amp;a=index&amp;id=3574" target="_blank"><img src="/myfcms/admin/Public/images/part-list.gif" title="预览" alt="预览" border="0" width="16" height="16"></a>
+						</td>
+					</tr><tr align="center" bgcolor="#FFFFFF" height="26" onmousemove="javascript:this.bgColor='#fafafa';" onmouseout="javascript:this.bgColor='#FFFFFF';">
+						<td>3573</td>
+						<td><input type="checkbox" id="chkId3573" class="chkid" name="arcid[]" value="3573"></td>
+						<td align="left">知乎：认知盈余的实践 														</td>
+						<td><div style="width:66px;height:15px;overflow:hidden" title="2012-06-23 20:56:33">2012-06-23 20:56:33</div></td>
+						<td>小学作文</td>
+						<td>
+							<span style="color:red">未生成</span>						</td>
+						<td>0</td>
+						
+						<td>
+							<img src="/myfcms/admin/Public/images/trun.gif" title="编辑属性" alt="编辑属性" onclick="openDialog(3573);" style="cursor:pointer" border="0" width="16" height="16">
+							<a href="/myfcms/admin/index.php?m=Archives&amp;a=update&amp;id=3573">
+								<img src="/myfcms/admin/Public/images/gtk-edit.png" title="编辑" alt="编辑" style="cursor:pointer" border="0" width="16" height="16"></a>
+							<a href="http://localhost/myfcms/index.php?m=Archives&amp;a=index&amp;id=3573" target="_blank"><img src="/myfcms/admin/Public/images/part-list.gif" title="预览" alt="预览" border="0" width="16" height="16"></a>
+						</td>
+					</tr><tr align="center" bgcolor="#FFFFFF" height="26" onmousemove="javascript:this.bgColor='#fafafa';" onmouseout="javascript:this.bgColor='#FFFFFF';">
+						<td>3572</td>
+						<td><input type="checkbox" id="chkId3572" class="chkid" name="arcid[]" value="3572"></td>
+						<td align="left">“轻轻松松”又一天 你当好了一名产品经理么？ 														</td>
+						<td><div style="width:66px;height:15px;overflow:hidden" title="2012-06-23 20:35:32">2012-06-23 20:35:32</div></td>
+						<td>小学作文</td>
+						<td>
+							<span style="color:red">未生成</span>						</td>
+						<td>0</td>
+						
+						<td>
+							<img src="/myfcms/admin/Public/images/trun.gif" title="编辑属性" alt="编辑属性" onclick="openDialog(3572);" style="cursor:pointer" border="0" width="16" height="16">
+							<a href="/myfcms/admin/index.php?m=Archives&amp;a=update&amp;id=3572">
+								<img src="/myfcms/admin/Public/images/gtk-edit.png" title="编辑" alt="编辑" style="cursor:pointer" border="0" width="16" height="16"></a>
+							<a href="http://localhost/myfcms/index.php?m=Archives&amp;a=index&amp;id=3572" target="_blank"><img src="/myfcms/admin/Public/images/part-list.gif" title="预览" alt="预览" border="0" width="16" height="16"></a>
+						</td>
+					</tr><tr align="center" bgcolor="#FFFFFF" height="26" onmousemove="javascript:this.bgColor='#fafafa';" onmouseout="javascript:this.bgColor='#FFFFFF';">
+						<td>3571</td>
+						<td><input type="checkbox" id="chkId3571" class="chkid" name="arcid[]" value="3571"></td>
+						<td align="left">手机应用开发：手机社交产品五大核心需求 														</td>
+						<td><div style="width:66px;height:15px;overflow:hidden" title="2012-06-23 20:23:33">2012-06-23 20:23:33</div></td>
+						<td>小学作文</td>
+						<td>
+							<span style="color:red">未生成</span>						</td>
+						<td>0</td>
+						
+						<td>
+							<img src="/myfcms/admin/Public/images/trun.gif" title="编辑属性" alt="编辑属性" onclick="openDialog(3571);" style="cursor:pointer" border="0" width="16" height="16">
+							<a href="/myfcms/admin/index.php?m=Archives&amp;a=update&amp;id=3571">
+								<img src="/myfcms/admin/Public/images/gtk-edit.png" title="编辑" alt="编辑" style="cursor:pointer" border="0" width="16" height="16"></a>
+							<a href="http://localhost/myfcms/index.php?m=Archives&amp;a=index&amp;id=3571" target="_blank"><img src="/myfcms/admin/Public/images/part-list.gif" title="预览" alt="预览" border="0" width="16" height="16"></a>
+						</td>
+					</tr><tr align="center" bgcolor="#FFFFFF" height="26" onmousemove="javascript:this.bgColor='#fafafa';" onmouseout="javascript:this.bgColor='#FFFFFF';">
+						<td>3570</td>
+						<td><input type="checkbox" id="chkId3570" class="chkid" name="arcid[]" value="3570"></td>
+						<td align="left">移动Web设计中的一些错误理念 														</td>
+						<td><div style="width:66px;height:15px;overflow:hidden" title="2012-06-23 20:22:34">2012-06-23 20:22:34</div></td>
+						<td>小学作文</td>
+						<td>
+							<span style="color:red">未生成</span>						</td>
+						<td>0</td>
+						
+						<td>
+							<img src="/myfcms/admin/Public/images/trun.gif" title="编辑属性" alt="编辑属性" onclick="openDialog(3570);" style="cursor:pointer" border="0" width="16" height="16">
+							<a href="/myfcms/admin/index.php?m=Archives&amp;a=update&amp;id=3570">
+								<img src="/myfcms/admin/Public/images/gtk-edit.png" title="编辑" alt="编辑" style="cursor:pointer" border="0" width="16" height="16"></a>
+							<a href="http://localhost/myfcms/index.php?m=Archives&amp;a=index&amp;id=3570" target="_blank"><img src="/myfcms/admin/Public/images/part-list.gif" title="预览" alt="预览" border="0" width="16" height="16"></a>
+						</td>
+					</tr><tr align="center" bgcolor="#FFFFFF" height="26" onmousemove="javascript:this.bgColor='#fafafa';" onmouseout="javascript:this.bgColor='#FFFFFF';">
+						<td>3569</td>
+						<td><input type="checkbox" id="chkId3569" class="chkid" name="arcid[]" value="3569"></td>
+						<td align="left">QQ产品团队解读QQ圈子：打破社交顿巴数魔咒 														</td>
+						<td><div style="width:66px;height:15px;overflow:hidden" title="2012-06-23 20:15:35">2012-06-23 20:15:35</div></td>
+						<td>小学作文</td>
+						<td>
+							<span style="color:red">未生成</span>						</td>
+						<td>0</td>
+						
+						<td>
+							<img src="/myfcms/admin/Public/images/trun.gif" title="编辑属性" alt="编辑属性" onclick="openDialog(3569);" style="cursor:pointer" border="0" width="16" height="16">
+							<a href="/myfcms/admin/index.php?m=Archives&amp;a=update&amp;id=3569">
+								<img src="/myfcms/admin/Public/images/gtk-edit.png" title="编辑" alt="编辑" style="cursor:pointer" border="0" width="16" height="16"></a>
+							<a href="http://localhost/myfcms/index.php?m=Archives&amp;a=index&amp;id=3569" target="_blank"><img src="/myfcms/admin/Public/images/part-list.gif" title="预览" alt="预览" border="0" width="16" height="16"></a>
+						</td>
+					</tr><tr align="center" bgcolor="#FFFFFF" height="26" onmousemove="javascript:this.bgColor='#fafafa';" onmouseout="javascript:this.bgColor='#FFFFFF';">
+						<td>3568</td>
+						<td><input type="checkbox" id="chkId3568" class="chkid" name="arcid[]" value="3568"></td>
+						<td align="left">如何在Google成为一名优秀的产品经理？ 														</td>
+						<td><div style="width:66px;height:15px;overflow:hidden" title="2012-06-23 20:08:37">2012-06-23 20:08:37</div></td>
+						<td>小学作文</td>
+						<td>
+							<span style="color:red">未生成</span>						</td>
+						<td>0</td>
+						
+						<td>
+							<img src="/myfcms/admin/Public/images/trun.gif" title="编辑属性" alt="编辑属性" onclick="openDialog(3568);" style="cursor:pointer" border="0" width="16" height="16">
+							<a href="/myfcms/admin/index.php?m=Archives&amp;a=update&amp;id=3568">
+								<img src="/myfcms/admin/Public/images/gtk-edit.png" title="编辑" alt="编辑" style="cursor:pointer" border="0" width="16" height="16"></a>
+							<a href="http://localhost/myfcms/index.php?m=Archives&amp;a=index&amp;id=3568" target="_blank"><img src="/myfcms/admin/Public/images/part-list.gif" title="预览" alt="预览" border="0" width="16" height="16"></a>
+						</td>
+					</tr><tr align="center" bgcolor="#FFFFFF" height="26" onmousemove="javascript:this.bgColor='#fafafa';" onmouseout="javascript:this.bgColor='#FFFFFF';">
+						<td>3567</td>
+						<td><input type="checkbox" id="chkId3567" class="chkid" name="arcid[]" value="3567"></td>
+						<td align="left">谈谈对O2O产品的一些看法 														</td>
+						<td><div style="width:66px;height:15px;overflow:hidden" title="2012-06-23 20:47:26">2012-06-23 20:47:26</div></td>
+						<td>小学作文</td>
+						<td>
+							<span style="color:red">未生成</span>						</td>
+						<td>0</td>
+						
+						<td>
+							<img src="/myfcms/admin/Public/images/trun.gif" title="编辑属性" alt="编辑属性" onclick="openDialog(3567);" style="cursor:pointer" border="0" width="16" height="16">
+							<a href="/myfcms/admin/index.php?m=Archives&amp;a=update&amp;id=3567">
+								<img src="/myfcms/admin/Public/images/gtk-edit.png" title="编辑" alt="编辑" style="cursor:pointer" border="0" width="16" height="16"></a>
+							<a href="http://localhost/myfcms/index.php?m=Archives&amp;a=index&amp;id=3567" target="_blank"><img src="/myfcms/admin/Public/images/part-list.gif" title="预览" alt="预览" border="0" width="16" height="16"></a>
+						</td>
+					</tr><tr align="center" bgcolor="#FFFFFF" height="26" onmousemove="javascript:this.bgColor='#fafafa';" onmouseout="javascript:this.bgColor='#FFFFFF';">
+						<td>3566</td>
+						<td><input type="checkbox" id="chkId3566" class="chkid" name="arcid[]" value="3566"></td>
+						<td align="left">单服生命周期和全服生命周期的关系 														</td>
+						<td><div style="width:66px;height:15px;overflow:hidden" title="2012-06-23 20:47:26">2012-06-23 20:47:26</div></td>
+						<td>小学作文</td>
+						<td>
+							<span style="color:red">未生成</span>						</td>
+						<td>0</td>
+						
+						<td>
+							<img src="/myfcms/admin/Public/images/trun.gif" title="编辑属性" alt="编辑属性" onclick="openDialog(3566);" style="cursor:pointer" border="0" width="16" height="16">
+							<a href="/myfcms/admin/index.php?m=Archives&amp;a=update&amp;id=3566">
+								<img src="/myfcms/admin/Public/images/gtk-edit.png" title="编辑" alt="编辑" style="cursor:pointer" border="0" width="16" height="16"></a>
+							<a href="http://localhost/myfcms/index.php?m=Archives&amp;a=index&amp;id=3566" target="_blank"><img src="/myfcms/admin/Public/images/part-list.gif" title="预览" alt="预览" border="0" width="16" height="16"></a>
+						</td>
+					</tr><tr align="center" bgcolor="#FFFFFF" height="26" onmousemove="javascript:this.bgColor='#fafafa';" onmouseout="javascript:this.bgColor='#FFFFFF';">
+						<td>3565</td>
+						<td><input type="checkbox" id="chkId3565" class="chkid" name="arcid[]" value="3565"></td>
+						<td align="left">你了解你的用户吗？驱动“用户分享”的秘密 														</td>
+						<td><div style="width:66px;height:15px;overflow:hidden" title="2012-06-23 20:49:26">2012-06-23 20:49:26</div></td>
+						<td>小学作文</td>
+						<td>
+							<span style="color:red">未生成</span>						</td>
+						<td>0</td>
+						
+						<td>
+							<img src="/myfcms/admin/Public/images/trun.gif" title="编辑属性" alt="编辑属性" onclick="openDialog(3565);" style="cursor:pointer" border="0" width="16" height="16">
+							<a href="/myfcms/admin/index.php?m=Archives&amp;a=update&amp;id=3565">
+								<img src="/myfcms/admin/Public/images/gtk-edit.png" title="编辑" alt="编辑" style="cursor:pointer" border="0" width="16" height="16"></a>
+							<a href="http://localhost/myfcms/index.php?m=Archives&amp;a=index&amp;id=3565" target="_blank"><img src="/myfcms/admin/Public/images/part-list.gif" title="预览" alt="预览" border="0" width="16" height="16"></a>
+						</td>
+					</tr><tr align="center" bgcolor="#FFFFFF" height="26" onmousemove="javascript:this.bgColor='#fafafa';" onmouseout="javascript:this.bgColor='#FFFFFF';">
+						<td>3564</td>
+						<td><input type="checkbox" id="chkId3564" class="chkid" name="arcid[]" value="3564"></td>
+						<td align="left">您的团队需要什么样的PM? 														</td>
+						<td><div style="width:66px;height:15px;overflow:hidden" title="2012-06-23 20:48:26">2012-06-23 20:48:26</div></td>
+						<td>小学作文</td>
+						<td>
+							<span style="color:red">未生成</span>						</td>
+						<td>0</td>
+						
+						<td>
+							<img src="/myfcms/admin/Public/images/trun.gif" title="编辑属性" alt="编辑属性" onclick="openDialog(3564);" style="cursor:pointer" border="0" width="16" height="16">
+							<a href="/myfcms/admin/index.php?m=Archives&amp;a=update&amp;id=3564">
+								<img src="/myfcms/admin/Public/images/gtk-edit.png" title="编辑" alt="编辑" style="cursor:pointer" border="0" width="16" height="16"></a>
+							<a href="http://localhost/myfcms/index.php?m=Archives&amp;a=index&amp;id=3564" target="_blank"><img src="/myfcms/admin/Public/images/part-list.gif" title="预览" alt="预览" border="0" width="16" height="16"></a>
+						</td>
+					</tr><tr align="center" bgcolor="#FFFFFF" height="26" onmousemove="javascript:this.bgColor='#fafafa';" onmouseout="javascript:this.bgColor='#FFFFFF';">
+						<td>3563</td>
+						<td><input type="checkbox" id="chkId3563" class="chkid" name="arcid[]" value="3563"></td>
+						<td align="left">奥特莱斯店铺分析 														</td>
+						<td><div style="width:66px;height:15px;overflow:hidden" title="2012-06-23 20:50:26">2012-06-23 20:50:26</div></td>
+						<td>小学作文</td>
+						<td>
+							<span style="color:red">未生成</span>						</td>
+						<td>0</td>
+						
+						<td>
+							<img src="/myfcms/admin/Public/images/trun.gif" title="编辑属性" alt="编辑属性" onclick="openDialog(3563);" style="cursor:pointer" border="0" width="16" height="16">
+							<a href="/myfcms/admin/index.php?m=Archives&amp;a=update&amp;id=3563">
+								<img src="/myfcms/admin/Public/images/gtk-edit.png" title="编辑" alt="编辑" style="cursor:pointer" border="0" width="16" height="16"></a>
+							<a href="http://localhost/myfcms/index.php?m=Archives&amp;a=index&amp;id=3563" target="_blank"><img src="/myfcms/admin/Public/images/part-list.gif" title="预览" alt="预览" border="0" width="16" height="16"></a>
+						</td>
+					</tr><tr align="center" bgcolor="#FFFFFF" height="26" onmousemove="javascript:this.bgColor='#fafafa';" onmouseout="javascript:this.bgColor='#FFFFFF';">
+						<td>3562</td>
+						<td><input type="checkbox" id="chkId3562" class="chkid" name="arcid[]" value="3562"></td>
+						<td align="left">走向产品是程序员的第三条职业通道 														</td>
+						<td><div style="width:66px;height:15px;overflow:hidden" title="2012-06-23 20:51:26">2012-06-23 20:51:26</div></td>
+						<td>小学作文</td>
+						<td>
+							<span style="color:red">未生成</span>						</td>
+						<td>0</td>
+						
+						<td>
+							<img src="/myfcms/admin/Public/images/trun.gif" title="编辑属性" alt="编辑属性" onclick="openDialog(3562);" style="cursor:pointer" border="0" width="16" height="16">
+							<a href="/myfcms/admin/index.php?m=Archives&amp;a=update&amp;id=3562">
+								<img src="/myfcms/admin/Public/images/gtk-edit.png" title="编辑" alt="编辑" style="cursor:pointer" border="0" width="16" height="16"></a>
+							<a href="http://localhost/myfcms/index.php?m=Archives&amp;a=index&amp;id=3562" target="_blank"><img src="/myfcms/admin/Public/images/part-list.gif" title="预览" alt="预览" border="0" width="16" height="16"></a>
+						</td>
+					</tr><tr align="center" bgcolor="#FFFFFF" height="26" onmousemove="javascript:this.bgColor='#fafafa';" onmouseout="javascript:this.bgColor='#FFFFFF';">
+						<td>3561</td>
+						<td><input type="checkbox" id="chkId3561" class="chkid" name="arcid[]" value="3561"></td>
+						<td align="left">产品经理如何赢得开发人员的尊重和支持？ 														</td>
+						<td><div style="width:66px;height:15px;overflow:hidden" title="2012-06-23 20:51:26">2012-06-23 20:51:26</div></td>
+						<td>小学作文</td>
+						<td>
+							<span style="color:red">未生成</span>						</td>
+						<td>0</td>
+						
+						<td>
+							<img src="/myfcms/admin/Public/images/trun.gif" title="编辑属性" alt="编辑属性" onclick="openDialog(3561);" style="cursor:pointer" border="0" width="16" height="16">
+							<a href="/myfcms/admin/index.php?m=Archives&amp;a=update&amp;id=3561">
+								<img src="/myfcms/admin/Public/images/gtk-edit.png" title="编辑" alt="编辑" style="cursor:pointer" border="0" width="16" height="16"></a>
+							<a href="http://localhost/myfcms/index.php?m=Archives&amp;a=index&amp;id=3561" target="_blank"><img src="/myfcms/admin/Public/images/part-list.gif" title="预览" alt="预览" border="0" width="16" height="16"></a>
+						</td>
+					</tr><tr align="center" bgcolor="#FFFFFF" height="26" onmousemove="javascript:this.bgColor='#fafafa';" onmouseout="javascript:this.bgColor='#FFFFFF';">
+						<td>3560</td>
+						<td><input type="checkbox" id="chkId3560" class="chkid" name="arcid[]" value="3560"></td>
+						<td align="left">QQ邮箱达人：做有人情味的产品 														</td>
+						<td><div style="width:66px;height:15px;overflow:hidden" title="2012-06-23 20:52:26">2012-06-23 20:52:26</div></td>
+						<td>小学作文</td>
+						<td>
+							<span style="color:red">未生成</span>						</td>
+						<td>0</td>
+						
+						<td>
+							<img src="/myfcms/admin/Public/images/trun.gif" title="编辑属性" alt="编辑属性" onclick="openDialog(3560);" style="cursor:pointer" border="0" width="16" height="16">
+							<a href="/myfcms/admin/index.php?m=Archives&amp;a=update&amp;id=3560">
+								<img src="/myfcms/admin/Public/images/gtk-edit.png" title="编辑" alt="编辑" style="cursor:pointer" border="0" width="16" height="16"></a>
+							<a href="http://localhost/myfcms/index.php?m=Archives&amp;a=index&amp;id=3560" target="_blank"><img src="/myfcms/admin/Public/images/part-list.gif" title="预览" alt="预览" border="0" width="16" height="16"></a>
+						</td>
+					</tr><tr align="center" bgcolor="#FFFFFF" height="26" onmousemove="javascript:this.bgColor='#fafafa';" onmouseout="javascript:this.bgColor='#FFFFFF';">
+						<td>3559</td>
+						<td><input type="checkbox" id="chkId3559" class="chkid" name="arcid[]" value="3559"></td>
+						<td align="left">街旁实战分享：装满数据的盒子等待被揭开 														</td>
+						<td><div style="width:66px;height:15px;overflow:hidden" title="2012-06-23 20:53:26">2012-06-23 20:53:26</div></td>
+						<td>小学作文</td>
+						<td>
+							<span style="color:red">未生成</span>						</td>
+						<td>0</td>
+						
+						<td>
+							<img src="/myfcms/admin/Public/images/trun.gif" title="编辑属性" alt="编辑属性" onclick="openDialog(3559);" style="cursor:pointer" border="0" width="16" height="16">
+							<a href="/myfcms/admin/index.php?m=Archives&amp;a=update&amp;id=3559">
+								<img src="/myfcms/admin/Public/images/gtk-edit.png" title="编辑" alt="编辑" style="cursor:pointer" border="0" width="16" height="16"></a>
+							<a href="http://localhost/myfcms/index.php?m=Archives&amp;a=index&amp;id=3559" target="_blank"><img src="/myfcms/admin/Public/images/part-list.gif" title="预览" alt="预览" border="0" width="16" height="16"></a>
+						</td>
+					</tr><tr align="center" bgcolor="#FFFFFF" height="26" onmousemove="javascript:this.bgColor='#fafafa';" onmouseout="javascript:this.bgColor='#FFFFFF';">
+						<td>3558</td>
+						<td><input type="checkbox" id="chkId3558" class="chkid" name="arcid[]" value="3558"></td>
+						<td align="left">探讨 Android 应用市场的产品设计：360 手机助手 														</td>
+						<td><div style="width:66px;height:15px;overflow:hidden" title="2012-06-23 20:54:26">2012-06-23 20:54:26</div></td>
+						<td>小学作文</td>
+						<td>
+							<span style="color:red">未生成</span>						</td>
+						<td>0</td>
+						
+						<td>
+							<img src="/myfcms/admin/Public/images/trun.gif" title="编辑属性" alt="编辑属性" onclick="openDialog(3558);" style="cursor:pointer" border="0" width="16" height="16">
+							<a href="/myfcms/admin/index.php?m=Archives&amp;a=update&amp;id=3558">
+								<img src="/myfcms/admin/Public/images/gtk-edit.png" title="编辑" alt="编辑" style="cursor:pointer" border="0" width="16" height="16"></a>
+							<a href="http://localhost/myfcms/index.php?m=Archives&amp;a=index&amp;id=3558" target="_blank"><img src="/myfcms/admin/Public/images/part-list.gif" title="预览" alt="预览" border="0" width="16" height="16"></a>
+						</td>
+					</tr><tr align="center" bgcolor="#FFFFFF" height="26" onmousemove="javascript:this.bgColor='#fafafa';" onmouseout="javascript:this.bgColor='#FFFFFF';">
+						<td>3557</td>
+						<td><input type="checkbox" id="chkId3557" class="chkid" name="arcid[]" value="3557"></td>
+						<td align="left">安卓应用商店的思考 														</td>
+						<td><div style="width:66px;height:15px;overflow:hidden" title="2012-06-23 20:55:26">2012-06-23 20:55:26</div></td>
+						<td>小学作文</td>
+						<td>
+							<span style="color:red">未生成</span>						</td>
+						<td>0</td>
+						
+						<td>
+							<img src="/myfcms/admin/Public/images/trun.gif" title="编辑属性" alt="编辑属性" onclick="openDialog(3557);" style="cursor:pointer" border="0" width="16" height="16">
+							<a href="/myfcms/admin/index.php?m=Archives&amp;a=update&amp;id=3557">
+								<img src="/myfcms/admin/Public/images/gtk-edit.png" title="编辑" alt="编辑" style="cursor:pointer" border="0" width="16" height="16"></a>
+							<a href="http://localhost/myfcms/index.php?m=Archives&amp;a=index&amp;id=3557" target="_blank"><img src="/myfcms/admin/Public/images/part-list.gif" title="预览" alt="预览" border="0" width="16" height="16"></a>
+						</td>
+					</tr><tr align="center" bgcolor="#FFFFFF" height="26" onmousemove="javascript:this.bgColor='#fafafa';" onmouseout="javascript:this.bgColor='#FFFFFF';">
+						<td>3556</td>
+						<td><input type="checkbox" id="chkId3556" class="chkid" name="arcid[]" value="3556"></td>
+						<td align="left">android平台通知体提醒机制研究 														</td>
+						<td><div style="width:66px;height:15px;overflow:hidden" title="2012-06-23 20:55:26">2012-06-23 20:55:26</div></td>
+						<td>小学作文</td>
+						<td>
+							<span style="color:red">未生成</span>						</td>
+						<td>0</td>
+						
+						<td>
+							<img src="/myfcms/admin/Public/images/trun.gif" title="编辑属性" alt="编辑属性" onclick="openDialog(3556);" style="cursor:pointer" border="0" width="16" height="16">
+							<a href="/myfcms/admin/index.php?m=Archives&amp;a=update&amp;id=3556">
+								<img src="/myfcms/admin/Public/images/gtk-edit.png" title="编辑" alt="编辑" style="cursor:pointer" border="0" width="16" height="16"></a>
+							<a href="http://localhost/myfcms/index.php?m=Archives&amp;a=index&amp;id=3556" target="_blank"><img src="/myfcms/admin/Public/images/part-list.gif" title="预览" alt="预览" border="0" width="16" height="16"></a>
+						</td>
+					</tr><tr align="center" bgcolor="#FFFFFF" height="26" onmousemove="javascript:this.bgColor='#fafafa';" onmouseout="javascript:this.bgColor='#FFFFFF';">
+						<td>3555</td>
+						<td><input type="checkbox" id="chkId3555" class="chkid" name="arcid[]" value="3555"></td>
+						<td align="left">如何从一个程序员转变为产品经理？ 														</td>
+						<td><div style="width:66px;height:15px;overflow:hidden" title="2012-06-23 20:56:26">2012-06-23 20:56:26</div></td>
+						<td>小学作文</td>
+						<td>
+							<span style="color:red">未生成</span>						</td>
+						<td>0</td>
+						
+						<td>
+							<img src="/myfcms/admin/Public/images/trun.gif" title="编辑属性" alt="编辑属性" onclick="openDialog(3555);" style="cursor:pointer" border="0" width="16" height="16">
+							<a href="/myfcms/admin/index.php?m=Archives&amp;a=update&amp;id=3555">
+								<img src="/myfcms/admin/Public/images/gtk-edit.png" title="编辑" alt="编辑" style="cursor:pointer" border="0" width="16" height="16"></a>
+							<a href="http://localhost/myfcms/index.php?m=Archives&amp;a=index&amp;id=3555" target="_blank"><img src="/myfcms/admin/Public/images/part-list.gif" title="预览" alt="预览" border="0" width="16" height="16"></a>
+						</td>
+					</tr>
+					<tr class="alt">
+						<td colspan="8">
+							<div class="pager">
+								 3574 条记录 1/179 页  <a href="/myfcms/admin/index.php?m=Archives&amp;a=main&amp;p=2">下一页</a>     &nbsp;<span class="current">1</span>&nbsp;<a href="/myfcms/admin/index.php?m=Archives&amp;a=main&amp;p=2">&nbsp;2&nbsp;</a>&nbsp;<a href="/myfcms/admin/index.php?m=Archives&amp;a=main&amp;p=3">&nbsp;3&nbsp;</a>&nbsp;<a href="/myfcms/admin/index.php?m=Archives&amp;a=main&amp;p=4">&nbsp;4&nbsp;</a>&nbsp;<a href="/myfcms/admin/index.php?m=Archives&amp;a=main&amp;p=5">&nbsp;5&nbsp;</a>  <a href="/myfcms/admin/index.php?m=Archives&amp;a=main&amp;p=6">下5页</a> <a href="/myfcms/admin/index.php?m=Archives&amp;a=main&amp;p=179">最后一页</a>							</div>
+						</td>
+					</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		{include file="bottom.html"}
+	</body>
+</html>

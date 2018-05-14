@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title>模板管理-闵益飞内容管理</title>
+		<meta name="description" content="" />
+		<meta name="author" content="minyifei.cn" />
+		<link type="text/css" rel="stylesheet" href="{$myf_path}/css/reset.css" />
+		<link type="text/css" rel="stylesheet" href="{$myf_path}/css/myfcms.css" />
+		<script type="text/javascript" src="{$myf_path}/js/jquery-1.7.2.min.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				
+				$("#submit-btn").click(function(){
+					if(confirm("确定要删除选中的链接吗？")){
+						$("#flinkForm").attr("action","{$myf_path}/index.php?m=flink&a=delete");
+						$("#flinkForm").submit();
+					}
+				})
+				
+				$("#submit-sort-btn").click(function(){
+					$("#flinkForm").attr("action","{$myf_path}/index.php?m=flink&a=sort_rank");
+					$("#flinkForm").submit();
+				})
+				
+				$("#chkAll").click(function(){
+					 var checked = $(this).attr("checked");
+					 if(checked == "checked"){
+						 $(".chkid").attr("checked",checked);
+					 }else{
+					 	$(".chkid").removeAttr("checked");
+					 }
+				})
+			})
+		</script>
+	</head>
+	<body>
+		{include file="../index/top.html"}
+		<div id="main" class="wapper clearfix">
+			<div class="uitopb uitopb-border">
+				<div class="uitopb-header">
+					<h3>模板管理</h3>
+				</div>
+				<div class="tabledv">
+					<form id="flinkForm" action="" method="post">
+					<table>
+						<tbody>
+							<tr>
+								<th class="tacenter" width="150">文件名</th>
+								<th class="tacenter" width="150">文件描述</th>
+								<th class="tacenter" width="120">修改时间</th>
+								<th class="tacenter" width="100">操作</th>
+							</tr>
+						{foreach from=$list item=vo}	
+						<tr align="center" bgcolor="#FFFFFF" height="26" onmousemove="javascript:this.bgColor='#fafafa';" onmouseout="javascript:this.bgColor='#FFFFFF';">
+							<td class="taleft">
+								{if $vo.pix eq 'face'}
+								<img src="{$myf_path}/images/face.png" />
+								{else if $vo.pix eq 'list'}
+								<img src="{$myf_path}/images/list.png" />
+								{else if $vo.pix eq 'single'}
+								<img src="{$myf_path}/images/page.png" />
+								{else}
+								<img src="{$myf_path}/images/htm.gif" />
+								{/if}
+								 {$vo.filename}.html
+							</td>
+							<td>
+								{$vo.name}
+							</td>
+							<td>
+								{$vo.updatetime}
+							</td>
+							<td>
+								<a href="{$myf_path}/index.php?m=moban&a=update&id={$vo.filename}">
+								<img src="{$myf_path}/images/gtk-edit.png" title="编辑" alt="编辑" style="cursor:pointer" border="0" width="16" height="16"></a>&nbsp;
+								{if $vo.default neq 'true'}
+								<a href="{$myf_path}/index.php?m=moban&a=delete_handler&id={$vo.filename}"  onclick="return(confirm('确定删除?删除后网站有可能不能正常显示'))"><img src="{$myf_path}/images/del.png" title="删除" alt="删除" border="0" width="16" height="16"></a>
+								{/if}
+							</td>
+						</tr>
+						{/foreach}
+						<tr class="alt">
+							<td colspan="4" class="taright">
+							[温馨提示：请谨慎修改、删除模板，此操作不可恢复!]
+							</td>
+						</tr>
+						</tbody>
+					</table>
+					</form>
+				</div>
+			</div>
+		</div>
+		{include file="../index/bottom.html"}
+	</body>
+</html>

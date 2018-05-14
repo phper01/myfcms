@@ -1,0 +1,111 @@
+<tagLib name="myfcms" />
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title>{global name="cfg_webname"}-中国首款完全开源免费的phpcms系统</title>
+		<meta name="keywords" content="闵益飞，闵益飞内容管理系统，myfcms，开源免费的phpcms系统，phpcms">
+		<meta name="description" content="闵益飞内容管理系统，英文缩写MyfCMS，是中国首款完全开源免费的phpcms系统，任何个人或组织,不论赢利与否均可以免费使用！">
+		<meta name="author" content="minyifei.cn" />
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link type="text/css" rel="stylesheet" href="{$myf_path}/tpl/company/public/css/main.css" />
+		<script type="text/javascript" src="{$myf_path}/tpl/company/public/js/jquery.js"></script>
+		<script type="text/javascript" src="{$myf_path}/tpl/company/public/js/jquery.carouFredSel-5.5.0.js"></script>
+		<script type="text/javascript" src="{$myf_path}/tpl/company/public/js/index.js"></script>
+	</head>
+	<body>
+		{include file="top.html"}
+		<div class="center">
+			<div class="header">
+                <div class="nav">
+                    <ul class="menu">
+                        <li>
+                            <a href="{$myf_path}/">首页</a>
+                        </li>
+                        {channel id="vo" topid="0"}
+                        <li>
+                            <a {if $vo.id eq $topchannel.id}class="on"{/if} href="{$vo.typeurl}">{$vo.typename}</a>
+                            <ul>
+                                {channel id="child" topid=$vo.id}
+                                <li>
+                                    <a  href="{$child.typeurl}">{$child.typename}</a>
+                                </li>
+                                {/channel}
+                            </ul>
+                        </li>
+                        {/channel}
+                    </ul>
+                </div>
+            </div>
+			<div class="main">
+				<div id="wrapper">
+					<div id="bg"></div>
+					<div id="carousel">
+						<div>
+							<img class="img-front" src="{$myf_path}/public/images/dot1.png" alt="dot1" width="450" height="350" />
+							<img class="img-back" src="{$myf_path}/public/images/dot2.png" alt="dot2" width="350" height="275" />
+							<h3>MyfCMS2.0</h3>
+							<p>中国首款完全开源免费的PHPCMS系统</p>
+							<a href="http://myfcms.minyifei.cn/category/download.html">免费下载 »</a>
+						</div>
+						<div>
+							<img class="img-front" src="{$myf_path}/public/images/cfs1.png" alt="cfs1" width="450" height="350" />
+							<img class="img-back" src="{$myf_path}/public/images/cfs2.png" alt="cfs2" width="350" height="275" />
+							<h3>MyfCMS2.0后台界面</h3>
+							<p>清爽的后台管理界面</p>
+							<a href="http://myfcms.minyifei.cn/category/use.html">界面预览 »</a>
+						</div>
+						<div>
+							<img class="img-front" src="{$myf_path}/public/images/val1.png" alt="val1" width="450" height="350" />
+							<img class="img-back" src="{$myf_path}/public/images/val2.png" alt="val2" width="350" height="275" />
+							<h3>强大的模板支持</h3>
+							<p>MyfCMS2.0采用Smarty模板引擎，支持在线编辑模板！</p>
+							<a href="http://myfcms.minyifei.cn/category/download.html">免费下载 »</a>
+						</div>
+					</div>
+					<a id="prev" href="#"><span></span></a>
+					<a id="next" href="#"><span></span></a>
+				</div>
+			</div>
+			<div class="footer">
+                <div class="logo">
+                    <img src="{$myf_path}/tpl/company/public/images/logo.png" />
+                </div>
+
+                <div class="powerby">
+                    Powered by <a href="http://www.minyifei.cn" target="_blank">MyfCMS</a>
+                    <br/>
+                    &copy;2012&nbsp;minyifei.cn
+                    <br/>
+                    京ICP备12002334号-1
+                </div>
+
+                <ul class="footer_nav">
+                    <li>
+                        <a href="{$myf_path}/category/Introduction.html">产品简介</a>
+                    </li>
+                    <li>
+                        <a href="{$myf_path}/category/contact.html">联系我们</a>
+                    </li>
+                    <li>
+                        <a href="{$myf_path}/category/use.html">帮助中心</a>
+                    </li>
+                    <li>
+                        <a href="{$myf_path}/category/license.html">授权协议</a>
+                    </li>
+                    <li>
+                        <a href="{$myf_path}/category/partner.html">合作伙伴</a>
+                    </li>
+                    <li>
+                        <a href="{$myf_path}/category/love.html">捐助我们</a>
+                    </li>
+                    <li>
+                       <script src="http://s84.cnzz.com/stat.php?id=3498821&web_id=3498821" language="JavaScript"></script>
+                    </li>
+                </ul>
+			</div>
+		</div>
+		
+	</body>
+</html>
